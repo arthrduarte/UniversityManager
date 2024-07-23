@@ -1,0 +1,59 @@
+﻿@page
+@model lab4.Pages.StudentManagement.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a asp-page="./Index" asp-route-sortBy="name">@Html.DisplayNameFor(model => model.Student[0].Name)</a>
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortBy="course">Number of Courses</a>
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortBy="grade">Avg. Grade</a>
+            </th>
+            <th>
+
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Student) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @item.NumberOfCourses
+            </td>
+            <td>
+                @item.AverageGrade
+            </td>
+            <td>
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a href="#" onclick="confirmDelete('@item.Id', '@item.Name')">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<script>
+
+    function confirmDelete(id, name) {
+        if (confirm(`Would you like to delete the student ${name} and all its records?`)) {
+            window.location.href=`/StudentManagement/Index?deleteId=${id}`
+        }
+    }
+
+</script>

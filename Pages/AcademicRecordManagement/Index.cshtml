@@ -1,0 +1,58 @@
+﻿@page
+@model lab4.Pages.AcademicRecordManagement.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a asp-page="./Index" asp-route-sortBy="course">Course</a>
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortBy="student">Student</a>
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortBy="grade">Grade</a>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Academicrecord) {
+        <tr>
+            <td>
+                @item.CourseTitle - @item.CourseId
+            </td>
+            <td>
+                @item.StudentId - @item.StudentName
+            </td>
+            <td>
+                @item.Grade
+            </td>
+            <td>
+                @* I don't know how to get the primary key to access the edit page. *@
+                @* <a asp-page="./Edit" asp-route="">Edit</a> *@
+                <a href="#" onclick="confirmDelete('@item.CourseId', '@item.CourseTitle', '@item.StudentId', '@item.StudentName')">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<script>
+
+    function confirmDelete(courseId, courseName, studentId, studentName) {
+        if (confirm(`Would you like to delete the record from ${studentName} in ${courseName}?`)) {
+            window.location.href = `/AcademicRecordManagement/Index?deleteId=${courseId}&studentId=${studentId}`;
+        }
+    }
+
+</script>
