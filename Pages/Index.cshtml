@@ -6,5 +6,34 @@
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <p>What would you like to do?</p>
+    <div class="mt-5 d-flex justify-content-center align-items-center">
+        <div class="text-center">
+            <div>
+                <h3 class="fw-normal">Manage Students</h3>
+                <p>View, create, delete and check a student's details'</p>
+            </div>
+            <div>
+                <button class="btn btn-primary text-white fw-bold"><a class="text-white fw-bold text-decoration-none" asp-area="" asp-page="StudentManagement/Index">Go to Students</a></button>
+            </div>
+        </div>
+        <div class="mx-5 text-center">
+            <div>
+                <h3 class="fw-normal">Manage Academic Records</h3>
+                <p>View, create and delete all academic records</p>
+            </div>
+            <div>
+                <button class="btn btn-primary text-white fw-bold"><a class="text-white fw-bold text-decoration-none" asp-area="" asp-page="AcademicRecordManagement/Index">Go to Academic Records</a></button>
+            </div>
+        </div>
+        <div class="text-center">
+            <div>
+                <h3 class="fw-normal">Manage Courses</h3>
+                <p>View details, create, delete and edit a course's details'</p>
+            </div>
+            <div>
+                <button class="btn btn-primary"><a class="text-white fw-bold text-decoration-none" asp-area="" asp-page="CourseManagement/Index">Go to Courses</a></button>
+            </div>
+        </div>
+    </div>
 </div>
